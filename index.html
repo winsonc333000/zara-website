@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zara Fall 2026 | FM 109 Final Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  nav .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+  }
+  nav ul li a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul li a:hover { color: #888; }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #1a1a1a;
+  }
+
+  /* HERO */
+  .hero {
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #f5f5f0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #f5f5f0 0%, #eae8e3 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    padding: 0 24px;
+  }
+  .hero-content .tag {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  .hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+  .hero-content p {
+    font-size: 17px;
+    color: #555;
+    max-width: 500px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  section.full-width {
+    max-width: 100%;
+    padding: 80px 0;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+  .section-text {
+    font-size: 16px;
+    color: #444;
+    max-width: 750px;
+    line-height: 1.8;
+  }
+  .section-text + .section-text {
+    margin-top: 16px;
+  }
+
+  /* TWO COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* IMAGE PLACEHOLDER */
+  .img-placeholder {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: #e8e6e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #aaa;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .img-placeholder.landscape { aspect-ratio: 16/9; }
+  .img-placeholder.square { aspect-ratio: 1/1; }
+
+  /* BRAND OVERVIEW STRIP */
+  .brand-strip {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 60px 40px;
+  }
+  .brand-strip-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+  .stat-item .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .stat-item .stat-desc {
+    font-size: 13px;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* CARDS */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+  }
+  .card {
+    border: 1px solid #e5e5e5;
+    padding: 30px;
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* POSITIONING TABLE */
+  .pos-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+  }
+  .pos-table th {
+    text-align: left;
+    padding: 14px 20px;
+    background: #f5f5f0;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #666;
+    border-bottom: 2px solid #ddd;
+  }
+  .pos-table td {
+    padding: 14px 20px;
+    font-size: 15px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+  }
+
+  /* SUPPLY CHAIN VISUAL */
+  .sc-flow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+    text-align: center;
+  }
+  .sc-step {
+    background: #f5f5f0;
+    padding: 24px 16px;
+    position: relative;
+  }
+  .sc-step .tier-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 8px;
+  }
+  .sc-step h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  .sc-step p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+  }
+  .sc-step::after {
+    content: '\2192';
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #ccc;
+  }
+  .sc-step:last-child::after { display: none; }
+
+  /* CIRCULAR ECONOMY */
+  .circ-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+  }
+  .circ-item {
+    padding: 30px;
+    background: #f9f9f6;
+    border-left: 3px solid #1a1a1a;
+  }
+  .circ-item h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .circ-item p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* ASSORTMENT GALLERY */
+  .assortment-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .assortment-card {
+    text-align: center;
+  }
+  .assortment-card .img-placeholder {
+    aspect-ratio: 3/4;
+    margin-bottom: 12px;
+  }
+  .assortment-card h4 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .assortment-card p {
+    font-size: 13px;
+    color: #888;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1a1a1a;
+    color: #aaa;
+    text-align: center;
+    padding: 40px;
+    font-size: 13px;
+  }
+  footer .footer-name {
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+
+  /* ANCHOR OFFSET */
+  section[id] {
+    scroll-margin-top: 70px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav ul { display: none; }
+    nav ul.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 20px 40px;
+      gap: 16px;
+    }
+    .hamburger { display: flex; }
+
+    .hero-content h1 { font-size: 36px; }
+    .two-col { grid-template-columns: 1fr; gap: 30px; }
+    .brand-strip-inner { grid-template-columns: repeat(2, 1fr); }
+    .card-grid { grid-template-columns: 1fr; }
+    .sc-flow { grid-template-columns: 1fr; }
+    .sc-step::after { display: none; }
+    .circ-grid { grid-template-columns: 1fr; }
+    .assortment-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 50px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">ZARA</div>
+  <button class="hamburger" onclick="document.querySelector('nav ul').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#customer">Customer</a></li>
+    <li><a href="#positioning">Positioning</a></li>
+    <li><a href="#assortment">Assortment</a></li>
+    <li><a href="#supply-chain">Supply Chain</a></li>
+    <li><a href="#circular">Circular Economy</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="tag">FM 109 Final Project</div>
+    <h1>Zara<br>Fall 2026</h1>
+    <p>A seasonal strategy exploring brand vision, assortment architecture, supply chain traceability, and circular economy for Zara's Fall 2026 collection.</p>
+  </div>
+</div>
+
+<!-- KEY STATS -->
+<div class="brand-strip">
+  <div class="brand-strip-inner">
+    <div class="stat-item">
+      <div class="stat-number">5,500+</div>
+      <div class="stat-desc">Stores Worldwide</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">96</div>
+      <div class="stat-desc">Countries</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">2-3</div>
+      <div class="stat-desc">Weeks Design to Shelf</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">88%</div>
+      <div class="stat-desc">Lower-Impact Fibers</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT / BRAND IDENTITY -->
+<section id="about">
+  <div class="two-col">
+    <div>
+      <div class="section-label">01 / Brand Identity</div>
+      <div class="section-title">About Zara</div>
+      <p class="section-text">Zara is the flagship brand of Spain-based Inditex Group, the world's largest fashion retailer. Founded in 1975 by Amancio Ortega, Zara built its identity around one core idea: speed. The brand takes runway-inspired designs and gets them into stores within two to three weeks, way faster than the traditional 8-12 month cycle most fashion companies rely on.</p>
+      <p class="section-text">What makes Zara different from other fast fashion brands is how it presents itself. The stores are clean, minimal, and almost gallery-like. There are no flashy ads, no celebrity endorsements, no loud branding. Zara lets the product do the talking. New items drop roughly twice a week, which keeps customers coming back to see what's changed. It creates urgency without being pushy about it.</p>
+      <p class="section-text">The brand operates on a vertically integrated model, meaning it controls design, manufacturing, and distribution in-house. This gives Zara the flexibility to respond to trends in real time and pull underperforming styles quickly. It's a system that's hard for competitors to replicate.</p>
+    </div>
+    <div>
+      <div class="img-placeholder">Zara storefront image</div>
+    </div>
+  </div>
+</section>
+
+<!-- TARGET CUSTOMER -->
+<section id="customer" style="background: #f9f9f6; max-width: 100%; padding: 80px 40px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-label">02 / Target Customer</div>
+    <div class="section-title">Who Shops at Zara</div>
+    <p class="section-text">Zara's core customer is between 18 and 35, though the brand pulls in shoppers up to their early 40s. They're mostly urban, trend-aware, and have a moderate to mid-level disposable income. These aren't people shopping for luxury designer pieces, but they also don't want to look like they just grabbed the first thing off a rack. They want pieces that feel current and put-together without spending a lot.</p>
+    <p class="section-text" style="margin-top: 16px;">Psychographically, Zara shoppers see fashion as a form of self-expression. They're digitally connected, active on social media, and they pay attention to what's trending. They value quality for the price and like the thrill of finding something new every time they walk in or open the app. The rapid inventory turnover is what keeps them loyal, not a points program or a membership discount.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>Demographics</h3>
+        <p>Ages 18-35, urban professionals and students, middle to upper-middle income. Both men and women, though womenswear is the dominant segment.</p>
+      </div>
+      <div class="card">
+        <h3>Psychographics</h3>
+        <p>Style-conscious, trend-reactive, values individuality. Wants to look good without paying designer prices. Active on Instagram and TikTok.</p>
+      </div>
+      <div class="card">
+        <h3>Behavior</h3>
+        <p>Frequent shoppers. Visits stores or browses online weekly. Responds to newness and scarcity. Rarely waits for sales because items sell out fast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSITIONING & PRICE -->
+<section id="positioning">
+  <div class="section-label">03 / Positioning & Price</div>
+  <div class="section-title">Where Zara Sits in the Market</div>
+  <p class="section-text">Zara positions itself as affordable luxury. It's not competing with H&M on price or with designer brands on exclusivity. It sits in this middle ground where the product feels elevated, the store experience is premium, but the prices stay accessible. A dress might be $50-90, a coat $120-200. You're not breaking the bank, but you're also not buying something that falls apart after two washes.</p>
+
+  <table class="pos-table">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Price Range</th>
+        <th>Breadth</th>
+        <th>Depth</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Women's Tops</td>
+        <td>$20 - $70</td>
+        <td>Wide (basics to statement)</td>
+        <td>Moderate (limited runs)</td>
+      </tr>
+      <tr>
+        <td>Women's Outerwear</td>
+        <td>$80 - $250</td>
+        <td>Moderate</td>
+        <td>Shallow (seasonal drops)</td>
+      </tr>
+      <tr>
+        <td>Women's Handbags</td>
+        <td>$30 - $90</td>
+        <td>Moderate</td>
+        <td>Shallow</td>
+      </tr>
+      <tr>
+        <td>Women's Belts</td>
+        <td>$20 - $50</td>
+        <td>Narrow</td>
+        <td>Shallow</td>
+      </tr>
+      <tr>
+        <td>Men's Tops</td>
+        <td>$18 - $60</td>
+        <td>Moderate</td>
+        <td>Moderate</td>
+      </tr>
+      <tr>
+        <td>Men's Outerwear</td>
+        <td>$70 - $200</td>
+        <td>Moderate</td>
+        <td>Shallow</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="section-text" style="margin-top: 30px;">Zara doesn't do traditional advertising. Instead, it invests in store design, prime retail locations on high streets and in major shopping districts, and a curated social media presence. The marketing is the product itself. Window displays change frequently, store layouts get refreshed, and the online experience mirrors the clean in-store aesthetic.</p>
+</section>
+
+<!-- ASSORTMENT -->
+<section id="assortment" style="background: #f9f9f6; max-width: 100%; padding: 80px 40px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-label">04 / Fall 2026 Assortment</div>
+    <div class="section-title">Structure & Shadow Collection</div>
+    <p class="section-text">The Fall 2026 "Structure & Shadow" collection draws from architectural silhouettes and tonal layering. Woven tops feature structured shoulders and clean lines in a palette anchored by charcoal, ivory, deep burgundy, and muted olive. Accessories, including handbags and belts, follow the same restrained color story with hardware details in matte black and antique gold.</p>
+
+    <div class="assortment-grid">
+      <div class="assortment-card">
+        <div class="img-placeholder">Woven Top 1</div>
+        <h4>Structured Blazer Top</h4>
+        <p>$59.90</p>
+      </div>
+      <div class="assortment-card">
+        <div class="img-placeholder">Woven Top 2</div>
+        <h4>Draped Collar Blouse</h4>
+        <p>$45.90</p>
+      </div>
+      <div class="assortment-card">
+        <div class="img-placeholder">Woven Top 3</div>
+        <h4>Asymmetric Poplin Shirt</h4>
+        <p>$39.90</p>
+      </div>
+      <div class="assortment-card">
+        <div class="img-placeholder">Woven Top 4</div>
+        <h4>Tonal Wrap Top</h4>
+        <p>$49.90</p>
+      </div>
+      <div class="assortment-card">
+        <div class="img-placeholder">Handbag 1</div>
+        <h4>City Tote - Charcoal</h4>
+        <p>$69.90</p>
+      </div>
+      <div class="assortment-card">
+        <div class="img-placeholder">Handbag 2</div>
+        <h4>Mini Crossbody - Ivory</h4>
+        <p>$45.90</p>
+      </div>
+      <div class="assortment-card">
+        <div class="img-placeholder">Belt 1</div>
+        <h4>Wide Leather Belt</h4>
+        <p>$35.90</p>
+      </div>
+      <div class="assortment-card">
+        <div class="img-placeholder">Belt 2</div>
+        <h4>Thin Chain Belt</h4>
+        <p>$25.90</p>
+      </div>
+    </div>
+
+    <p class="section-text" style="margin-top: 30px; font-size: 13px; color: #999;">Note: Product images from line sheets (Assignments 3 & 4) would be inserted here. Placeholder boxes shown for layout reference.</p>
+  </div>
+</section>
+
+<!-- SUPPLY CHAIN -->
+<section id="supply-chain">
+  <div class="section-label">05 / Supply Chain Traceability</div>
+  <div class="section-title">From Cotton to Consumer</div>
+  <p class="section-text">Tracing a basic Zara cotton t-shirt from raw material to the final product. Since Inditex does not publicly disclose its full supplier list, H&M's publicly available supplier data via Open Supply Hub was used as a comparable reference to identify realistic Tier 1 and Tier 2 facilities.</p>
+
+  <div class="sc-flow">
+    <div class="sc-step">
+      <div class="tier-label">Tier 4</div>
+      <h4>Raw Material</h4>
+      <p>BCI-certified cotton farms in Turkey's Aegean region (Izmir, Manisa). Organic and Better Cotton practices.</p>
+    </div>
+    <div class="sc-step">
+      <div class="tier-label">Tier 3</div>
+      <h4>Fiber Processing</h4>
+      <p>Cotton ginning and spinning in Turkey. Raw cotton cleaned, separated, and spun into yarn.</p>
+    </div>
+    <div class="sc-step">
+      <div class="tier-label">Tier 2</div>
+      <h4>Textile Mfg.</h4>
+      <p>Kivanc Textile, Bursa, Turkey. BCI-certified facility producing woven and knit fabrics. OEKO-TEX certified.</p>
+    </div>
+    <div class="sc-step">
+      <div class="tier-label">Tier 1</div>
+      <h4>Garment Mfg.</h4>
+      <p>Garment factory in Istanbul, Turkey. Cutting, sewing, finishing, and quality control. Near Tier 2 to reduce logistics.</p>
+    </div>
+    <div class="sc-step">
+      <div class="tier-label">Tier 0</div>
+      <h4>Brand / Retailer</h4>
+      <p>Zara (Inditex Group), headquartered in Arteixo, Spain. Turkey is a key proximity sourcing country for faster lead times.</p>
+    </div>
+  </div>
+
+  <p class="section-text" style="margin-top: 30px;">Keeping all tiers within Turkey minimizes transportation distance, reduces the carbon footprint, and shortens lead times. This aligns with Zara's proximity sourcing strategy, where production stays close to key European markets for faster turnaround.</p>
+</section>
+
+<!-- CIRCULAR ECONOMY -->
+<section id="circular" style="background: #f9f9f6; max-width: 100%; padding: 80px 40px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-label">06 / Circular Economy</div>
+    <div class="section-title">Sustainability at Zara</div>
+    <p class="section-text">Zara and parent company Inditex have committed to a series of sustainability targets as part of their push toward a more circular business model. As of 2025, 88% of the fibers used across Inditex brands are certified as organic, recycled, or lower-impact alternatives. The company aims to cut value chain emissions by 50% by 2030 and reach net zero by 2040.</p>
+
+    <div class="circ-grid">
+      <div class="circ-item">
+        <h4>Zara Pre-Owned</h4>
+        <p>Launched in key markets, Zara Pre-Owned allows customers to resell, donate, or repair their used Zara garments. It extends product life cycles and keeps clothing out of landfills. This is a direct application of circular economy thinking within a fast fashion model.</p>
+      </div>
+      <div class="circ-item">
+        <h4>In-Store Collection</h4>
+        <p>Zara stores have clothing collection bins where customers can drop off used garments from any brand. Collected items are sorted for reuse, recycling, or donation. Since 2015, the program has collected tens of thousands of tonnes of used clothing across 24+ markets.</p>
+      </div>
+      <div class="circ-item">
+        <h4>Preferred Fibers</h4>
+        <p>By 2030, Inditex plans to source 40% of materials from conventional recycling, 25% from next-gen recycled fibers, and 25% from organic or regenerative farming. The remaining 10% will come from certified lower-impact sources. They're also investing in textile-to-textile recycling startups like Circ.</p>
+      </div>
+      <div class="circ-item">
+        <h4>Join Life Collection</h4>
+        <p>The "Join Life" label marks products made with materials that have a reduced environmental impact, like organic cotton, recycled polyester, and Tencel Lyocell. It's Zara's way of making sustainable options identifiable to the customer without requiring a separate product line.</p>
+      </div>
+    </div>
+
+    <p class="section-text" style="margin-top: 30px;">The tension between fast fashion's volume-driven model and genuine sustainability is real, and it's worth acknowledging. Critics argue that producing less is the only real solution. But within the current framework, Zara is taking measurable steps: proximity sourcing, material innovation, resale infrastructure, and transparency improvements. Whether it's enough is an ongoing conversation in the industry.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">FM 109 | Fall 2026 Seasonal Strategy</div>
+  <p>Winson | Fashion Institute of Technology | Spring 2026</p>
+</footer>
+
+<script>
+  // Smooth scroll
+  document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('nav ul').classList.remove('open');
+      }
+    });
+  });
+</script>
+</body>
+</html>

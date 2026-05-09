@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Citations | Zara Fall 2026 | FM 109 Final Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: relative;
+    z-index: 100;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  nav .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1a1a1a;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+  nav ul li a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul li a:hover { color: #888; }
+  nav ul li a.active {
+    color: #1a1a1a;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 2px;
+  }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #1a1a1a;
+  }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 70px 40px 50px;
+    background: #f5f5f0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .page-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .page-header .tag {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 16px;
+  }
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .page-header p {
+    font-size: 16px;
+    color: #555;
+    font-weight: 300;
+    max-width: 600px;
+  }
+
+  /* CITATIONS CONTENT */
+  .citations-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 40px 100px;
+  }
+
+  .citation-section {
+    margin-bottom: 56px;
+  }
+  .citation-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .citation-category {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .citation-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .citation-item {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .citation-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: #bbb;
+    padding-top: 2px;
+    text-align: right;
+  }
+
+  .citation-body {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.8;
+  }
+
+  .citation-body a {
+    color: #1a1a1a;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    word-break: break-all;
+  }
+  .citation-body a:hover { color: #888; }
+
+  /* FOOTER */
+  footer {
+    background: #1a1a1a;
+    color: #aaa;
+    text-align: center;
+    padding: 40px;
+    font-size: 13px;
+  }
+  footer .footer-name {
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav ul { display: none; }
+    nav ul.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 20px 40px;
+      gap: 16px;
+    }
+    .hamburger { display: flex; }
+    .page-header h1 { font-size: 36px; }
+    .citations-wrapper { padding: 50px 24px 80px; }
+    .page-header { padding: 50px 24px 40px; }
+    .citation-item { grid-template-columns: 28px 1fr; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">ZARA</a>
+  <button class="hamburger" onclick="document.querySelector('nav ul').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#customer">Customer</a></li>
+    <li><a href="index.html#positioning">Positioning</a></li>
+    <li><a href="index.html#assortment">Assortment</a></li>
+    <li><a href="index.html#supply-chain">Supply Chain</a></li>
+    <li><a href="index.html#circular">Circular Economy</a></li>
+    <li><a href="citations.html" class="active">Citations</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="tag">FM 109 Final Project</div>
+    <h1>Citations</h1>
+    <p>All sources referenced in the Zara Fall 2026 seasonal strategy project.</p>
+  </div>
+</div>
+
+<!-- CITATIONS -->
+<div class="citations-wrapper">
+
+  <!-- Brand & Company -->
+  <div class="citation-section">
+    <div class="citation-category">Brand &amp; Company Overview</div>
+    <ul class="citation-list">
+      <li class="citation-item">
+        <span class="citation-num">1</span>
+        <span class="citation-body">Inditex. (2025). <em>Annual Report 2024.</em> Inditex Group. <a href="https://www.inditex.com/en/investors/investors-and-shareholders/annual-report" target="_blank">https://www.inditex.com/en/investors/investors-and-shareholders/annual-report</a></span>
+      </li>
+      <li class="citation-item">
+        <span class="citation-num">2</span>
+        <span class="citation-body">Zara. (2025). <em>About Zara.</em> Zara Official Website. <a href="https://www.zara.com/us/en/about-zara.html" target="_blank">https://www.zara.com/us/en/about-zara.html</a></span>
+      </li>
+      <li class="citation-item">
+        <span class="citation-num">3</span>
+        <span class="citation-body">Petro, G. (2012, January 23). The Zara approach: Retail giant does it differently. <em>Forbes.</em> <a href="https://www.forbes.com/sites/gregpetro/2012/01/23/the-future-of-fashion-retailing-the-zara-approach-part-2-of-3/" target="_blank">https://www.forbes.com/sites/gregpetro/2012/01/23/the-future-of-fashion-retailing-the-zara-approach-part-2-of-3/</a></span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Target Customer -->
+  <div class="citation-section">
+    <div class="citation-category">Target Customer &amp; Market Positioning</div>
+    <ul class="citation-list">
+      <li class="citation-item">
+        <span class="citation-num">4</span>
+        <span class="citation-body">Statista. (2024). <em>Zara brand profile in the United States.</em> Statista Research Department. <a href="https://www.statista.com/forecasts/1000060/zara-brand-profile-in-the-united-states" target="_blank">https://www.statista.com/forecasts/1000060/zara-brand-profile-in-the-united-states</a></span>
+      </li>
+      <li class="citation-item">
+        <span class="citation-num">5</span>
+        <span class="citation-body">Remy, N., Speelman, E., &amp; Swartz, S. (2016, November). <em>Style that's sustainable: A new fast-fashion formula.</em> McKinsey &amp; Company. <a href="https://www.mckinsey.com/capabilities/sustainability/our-insights/style-thats-sustainable-a-new-fast-fashion-formula" target="_blank">https://www.mckinsey.com/capabilities/sustainability/our-insights/style-thats-sustainable-a-new-fast-fashion-formula</a></span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Supply Chain -->
+  <div class="citation-section">
+    <div class="citation-category">Supply Chain &amp; Sourcing</div>
+    <ul class="citation-list">
+      <li class="citation-item">
+        <span class="citation-num">6</span>
+        <span class="citation-body">Open Supply Hub. (2024). <em>H&amp;M Group supplier list.</em> Open Supply Hub. <a href="https://opensupplyhub.org/facilities?contributors=2048" target="_blank">https://opensupplyhub.org/facilities?contributors=2048</a></span>
+      </li>
+      <li class="citation-item">
+        <span class="citation-num">7</span>
+        <span class="citation-body">Better Cotton Initiative. (2024). <em>Better Cotton in Turkey.</em> Better Cotton. <a href="https://bettercotton.org/where-we-work/turkey/" target="_blank">https://bettercotton.org/where-we-work/turkey/</a></span>
+      </li>
+      <li class="citation-item">
+        <span class="citation-num">8</span>
+        <span class="citation-body">Inditex. (2024). <em>Supply chain transparency.</em> Inditex Group. <a href="https://www.inditex.com/en/sustainability/our-approach/supply-chain" target="_blank">https://www.inditex.com/en/sustainability/our-approach/supply-chain</a></span>
+      </li>
+      <li class="citation-item">
+        <span class="citation-num">9</span>
+        <span class="citation-body">OEKO-TEX. (2024). <em>OEKO-TEX STANDARD 100.</em> OEKO-TEX Association. <a href="https://www.oeko-tex.com/en/our-standards/oeko-tex-standard-100" target="_blank">https://www.oeko-tex.com/en/our-standards/oeko-tex-standard-100</a></span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Circular Economy / Sustainability -->
+  <div class="citation-section">
+    <div class="citation-category">Circular Economy &amp; Sustainability</div>
+    <ul class="citation-list">
+      <li class="citation-item">
+        <span class="citation-num">10</span>
+        <span class="citation-body">Inditex. (2025). <em>2024 Global sustainability report.</em> Inditex Group. <a href="https://www.inditex.com/en/sustainability/reporting-and-indices/sustainability-reports" target="_blank">https://www.inditex.com/en/sustainability/reporting-and-indices/sustainability-reports</a></span>
+      </li>
+      <li class="citation-item">
+        <span class="citation-num">11</span>
+        <span class="citation-body">Zara. (2024). <em>Zara Pre-Owned.</em> Zara Official Website. <a href="https://www.zara.com/us/en/preowned.html" target="_blank">https://www.zara.com/us/en/preowned.html</a></span>
+      </li>
+      <li class="citation-item">
+        <span class="citation-num">12</span>
+        <span class="citation-body">Circ. (2024). <em>About Circ: Textile-to-textile recycling.</em> Circ. <a href="https://www.circ.earth" target="_blank">https://www.circ.earth</a></span>
+      </li>
+      <li class="citation-item">
+        <span class="citation-num">13</span>
+        <span class="citation-body">Inditex. (2024). <em>Our commitments: Climate action.</em> Inditex Group. <a href="https://www.inditex.com/en/sustainability/our-approach/climate-action" target="_blank">https://www.inditex.com/en/sustainability/our-approach/climate-action</a></span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Images -->
+  <div class="citation-section">
+    <div class="citation-category">Images</div>
+    <ul class="citation-list">
+      <li class="citation-item">
+        <span class="citation-num">14</span>
+        <span class="citation-body">Chmee2. (2013). <em>Zara – London UK 27</em> [Photograph]. Wikimedia Commons. <a href="https://commons.wikimedia.org/wiki/File:Zara_-_London_UK_27.jpg" target="_blank">https://commons.wikimedia.org/wiki/File:Zara_-_London_UK_27.jpg</a> (CC BY 3.0)</span>
+      </li>
+      <li class="citation-item">
+        <span class="citation-num">15</span>
+        <span class="citation-body">Zara. (2026). <em>Fall 2026 woven tops line sheet</em> [Course material]. Fashion Institute of Technology, FM 109.</span>
+      </li>
+      <li class="citation-item">
+        <span class="citation-num">16</span>
+        <span class="citation-body">Zara. (2026). <em>Fall 2026 knit &amp; lounge line sheet</em> [Course material]. Fashion Institute of Technology, FM 109.</span>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">FM 109 | Fall 2026 Seasonal Strategy</div>
+  <p>Winson | Fashion Institute of Technology | Spring 2026</p>
+</footer>
+
+<script>
+  document.querySelector('.hamburger').addEventListener('click', () => {
+    document.querySelector('nav ul').classList.toggle('open');
+  });
+</script>
+</body>
+</html>
